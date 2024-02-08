@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frappe
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frappe
+  template:
+    metadata:
+      labels:
+        app: frappe
+    spec:
+      containers:
+      - name: frappe
+        image: frappe/bench:latest
+        command: ["bash", "/workspace/init.sh"]
